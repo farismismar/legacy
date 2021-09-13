@@ -1,0 +1,28 @@
+; Faris Mismar
+; 2021-09-04.  More than 27 years after the fact!
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+TO STAR :S :L
+  MAKE "THETA (360 / :S) * 2
+  MAKE "ALPHA 180 - :THETA
+  MAKE "R :L / 2 * 1 / (SIN (:THETA / 2)) 
+
+  ; Pre rotation
+  PU LT (:THETA / 2) FD :R RT (:THETA / 2)
+
+  ; Draw the star
+  RT 90 
+  PD REPEAT :S[FD :L RT :THETA]
+  ST 
+
+  ; Post rotation
+  PU RT :ALPHA / 2
+  FD :R
+  LT 90 + :ALPHA / 2
+  
+  ; Inscribing circle
+  LT 90 FD :R RT 90 PD
+  MAKE "PI 3.141592
+  MAKE "T (2 * :PI * :R) / 360
+  REPEAT 360[FD :T RT 1]
+  PU RT 90 FD :R LT 90
+END
