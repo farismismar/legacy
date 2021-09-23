@@ -1,9 +1,8 @@
 0100 ; Faris Mismar 2021-09-10
-0110 ; Finally a Hello World in Atari
-8-bit Assembly.
-0120   *=      $0600 ; Page 6
+0110 ; Finally a Hello World in Atari 8-bit Assembly.
+0120   *=      $0600; Page 6
 0130 ; CIOV Locations
-0140 ICHID   =       $0340 ;IOCB 0 S:
+0140 ICHID   =       $0340; IOCB 0 screen editor (E:)
 0150 ICCOM   =       $0342
 0160 ICBAL   =       $0344
 0170 ICBAH   =       $0345
@@ -12,21 +11,21 @@
 0200 ICBLL   =       $0348
 0210 ICBLH   =       $0349
 0220 CIOV    =       $E456
-0220 CIOV    =       $E456
 0230 MSGLEN  =       $FF
-0240 MAIN    CLD
-0250         LDX #0; Initialize X register
-0260         LDA #9; Write one line.
-0270         STA ICCOM
-0280         LDA #MSG&255; LO
-0290         STA ICBAL
-0300         LDA #MSG/256; HI
-0310         STA ICBAH
-0320         LDA #MSGLEN&255
-0330         STA ICBLL
-0340         LDA #MSGLEN/256; Message length is in ICBL.
-0350         STA ICBLH
-0360         JSR CIOV
-0370         RTS
-0380 MSG     .BYTE   "Hello World!",$9B
-0390         .END
+0240 EOL     =       $9B
+0250 MAIN    CLD
+0260         LDX #0; Initialize X register
+0270         LDA #9; Write one line.
+0280         STA ICCOM
+0290         LDA #MSG&255; LSB
+0300         STA ICBAL
+0310         LDA #MSG/256; MSB
+0320         STA ICBAH
+0330         LDA #MSGLEN&255
+0340         STA ICBLL
+0350         LDA #MSGLEN/256; Message length is in ICBL.
+0360         STA ICBLH
+0370         JSR CIOV
+0380         RTS
+0390 MSG     .BYTE   "Hello World!",EOL
+0400         .END
