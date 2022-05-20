@@ -1,0 +1,83 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usepackage{tkz-euclide}
+\usepackage{bbm}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{calc,intersections,angles,quotes}
+\title{Proof}
+\author{Faris B. Mismar}
+\date{September 2021}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+Let an arbitrary star $\mathcal{S}$ have a length $\ell$ and $N$ points, with $N, \ell \in \mathbbm{Z}_{++}$.  To draw this star, as shown in g.~\ref{fig:star}, the angle that the graphics turtle would need to rotate in each of the $N$ line segments of length $\ell$ is:
+\begin{equation}
+    \theta = \frac{360^\circ}{N} \times 2.
+\end{equation}%
+
+Let $\alpha$ be the measure of the circumferential angles formed by the vertices of the star $\mathcal{S}$ at the circumference of the inscribing circle.  It is easy to show that the radius of the circle $r$ splits $\triangle AXY$ into two identical triangles and therefore $\angle XAO = \alpha/2$.  Due to the same reason, the interior angle of the $N$-polygon formed by the star $\angle XOY = \frac{\theta}{4}$.
+
+It should be easy to find out that $\alpha = 180^\circ - \theta$ since both angles fall on a straight line.  These two angles are \textit{supplementary}.
+
+We inspect $\triangle AOB$ and $\triangle ADB$ knowing that $\angle ADB \coloneqq \alpha$ due to symmetry.  Therefore, the central angle $\angle BOA$ sharing the same arc with the circumferential angle has the measure of $2\alpha$.
+
+$\triangle AOB$ is an isosceles triangle with the base angle measure of $\gamma$.  Therefore, the measure of $\angle BOA$ is $\zeta \coloneqq 180^\circ - 2 \gamma$.  We can use the law of sines and write:
+
+\begin{equation}
+    \frac{r}{\sin \gamma}  = \frac{\overline{\rm AB}}{\sin \zeta},
+\end{equation}
+which makes it easy to write $r$ as
+\begin{equation}
+\begin{aligned}
+r &= \overline{\rm AB} \frac{\sin \gamma}{\sin (180^\circ - 2\gamma)} \\
+  &= \overline{\rm AB} \frac{\sin \gamma}{\sin 2\gamma} \\ 
+  &= \overline{\rm AB} \frac{1}{\cos \gamma}, \\ 
+\end{aligned}
+\end{equation}%
+where the last steps comes from the trigonometric identity of the sine of a double-angle.  We can write $\gamma$ in terms of the circumferential angle $\alpha$ since $\zeta = 2\alpha = 180^\circ - 2\gamma$ (all from $\triangle AOB$).  Thus:
+\begin{equation}
+    \gamma = \frac{1}{2} (180^\circ - 2\alpha) = 90^\circ - \alpha.
+\end{equation}
+
+Now we can write $r$ using the cosine of the complementary angle as follows
+\begin{equation}
+\label{eq:r_prelim}
+r = \overline{\rm AB} \frac{1}{\sin \alpha}. \\ 
+\end{equation}
+
+We inspect $\triangle ABD$, which again is an isosceles triangle.  The base angles have the measure of $\gamma + \alpha / 2 = 90^\circ - \alpha / 2$ each.  The law of sines enables us to write:
+
+\begin{equation}
+    \frac{\ell}{\sin(90^\circ - \alpha / 2)}  = \frac{\overline{\rm AB}}{\sin \alpha}.
+\end{equation}
+
+Here we can compute:
+
+\begin{equation}
+    \overline{\rm AB} =  \ell \frac{\sin \alpha}{\cos \alpha/2},
+\end{equation}
+where the use of the sine of the double-angle identity again allows us to write $\overline{\rm AB} = 2\ell \sin \alpha/2$.  What is left now is finding $r$ substituting $\overline{\rm AB}$ in \eqref{eq:r_prelim} in terms of $N$ and $\ell$:
+
+\begin{equation}
+r = \frac{2 \ell \sin \alpha / 2}{\sin \alpha} = \frac{\ell}{\cos \alpha / 2}  = \frac{\ell}{\sin \frac{360^\circ}{N}}
+\end{equation}
+
+\begin{equation}
+\therefore r  = \ell \csc \left ( \frac{360^\circ}{N} \right ) \qquad \blacksquare
+\end{equation}
+
+\begin{figure}[!t]
+\centering
+\input{triangle.tikz}
+\caption{Solving the triangles}\label{fig:star}
+\end{figure}
+
+\end{document}
