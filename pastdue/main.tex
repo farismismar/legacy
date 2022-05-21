@@ -39,10 +39,10 @@ which makes it easy to write $r$ as
 \begin{aligned}
 r &= \overline{\rm AB} \frac{\sin \gamma}{\sin (180^\circ - 2\gamma)} \\
   &= \overline{\rm AB} \frac{\sin \gamma}{\sin 2\gamma} \\ 
-  &= \overline{\rm AB} \frac{1}{\cos \gamma}, \\ 
+  &= \overline{\rm AB} \frac{1}{2\cos \gamma}, \\ 
 \end{aligned}
 \end{equation}%
-where the last steps comes from the trigonometric identity of the sine of a double-angle.  We can write $\gamma$ in terms of the circumferential angle $\alpha$ since $\zeta = 2\alpha = 180^\circ - 2\gamma$ (all from $\triangle AOB$).  Thus:
+where the last step comes from the trigonometric identity of the sine of a double-angle.  We can write $\gamma$ in terms of the circumferential angle $\alpha$ since $\zeta = 2\alpha = 180^\circ - 2\gamma$ (all from $\triangle AOB$).  Thus:
 \begin{equation}
     \gamma = \frac{1}{2} (180^\circ - 2\alpha) = 90^\circ - \alpha.
 \end{equation}
@@ -50,7 +50,7 @@ where the last steps comes from the trigonometric identity of the sine of a doub
 Now we can write $r$ using the cosine of the complementary angle as follows
 \begin{equation}
 \label{eq:r_prelim}
-r = \overline{\rm AB} \frac{1}{\sin \alpha}. \\ 
+r = \frac{\overline{\rm AB}} {2 \sin \alpha}. \\ 
 \end{equation}
 
 We inspect $\triangle ABD$, which again is an isosceles triangle.  The base angles have the measure of $\gamma + \alpha / 2 = 90^\circ - \alpha / 2$ each.  The law of sines enables us to write:
@@ -62,16 +62,17 @@ We inspect $\triangle ABD$, which again is an isosceles triangle.  The base angl
 Here we can compute:
 
 \begin{equation}
-    \overline{\rm AB} =  \ell \frac{\sin \alpha}{\cos \alpha/2},
-\end{equation}
-where the use of the sine of the double-angle identity again allows us to write $\overline{\rm AB} = 2\ell \sin \alpha/2$.  What is left now is finding $r$ substituting $\overline{\rm AB}$ in \eqref{eq:r_prelim} in terms of $N$ and $\ell$:
+    \overline{\rm AB} =  \ell \frac{\sin \alpha}{\cos \alpha/2} \\
+    \label{eq:r_prelim_2}
+\end{equation}%
+using the trigonometric identity of the sine of a double-angle again.  What is left now is finding $r$  in terms of $N$ and $\ell$, which is obtained by substituting $\overline{\rm AB}$ of \eqref{eq:r_prelim_2} into \eqref{eq:r_prelim}:
 
 \begin{equation}
-r = \frac{2 \ell \sin \alpha / 2}{\sin \alpha} = \frac{\ell}{\cos \alpha / 2}  = \frac{\ell}{\sin \frac{360^\circ}{N}}
+r = \frac{\ell}{2\cos \alpha / 2}  = \frac{\ell}{2\sin \frac{360^\circ}{N}}
 \end{equation}
 
 \begin{equation}
-\therefore r  = \ell \csc \left ( \frac{360^\circ}{N} \right ) \qquad \blacksquare
+\therefore r  = \frac{\ell}{2} \csc \left ( \frac{360^\circ}{N} \right ) \qquad \blacksquare
 \end{equation}
 
 \begin{figure}[!t]
