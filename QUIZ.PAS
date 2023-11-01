@@ -5,7 +5,7 @@ program MathQuiz(input, output);
 
 var
    m, n, oper, result, answer: integer;
-   correct, wrong: integer;
+   correct: integer;
    score: real;
    operChar: char;
    valid: boolean;
@@ -17,6 +17,7 @@ begin
      while true do
            begin
                 valid := true;
+                Randomize; {improves quality of randomness}
                 oper := random(4);
                 m := random(9) + 1;
                 n := random(9) + 1;
@@ -24,24 +25,24 @@ begin
                 if (oper = 0) then {addition}
                    begin
                         operChar := '+';
-                        result := m + n;
+                        result := m + n
                    end
                 else if (oper = 1) then {subtraction}
                      begin
                           operChar := '-';
                           result := m - n;
-                          if (result < 0) then valid := false;
+                          if (result < 0) then valid := false
                      end
                 else if (oper = 2) then {multiplication}
                      begin
                           operChar := '*';
-                          result := m * n;
+                          result := m * n
                      end
                 else {division}
                      begin
                           operChar := '/';
                           result := m div n;
-                          if (result <> (m / n)) then valid := false; {integer div}
+                          if (result <> (m / n)) then valid := false {integer div}
                      end;
 
                 if (valid) then
@@ -51,17 +52,16 @@ begin
                         if (answer = result) then
                            begin
                                 writeln('Good job!');
-                                correct := correct + 1;
+                                inc(correct)
                            end
                         else
                             begin
                                  writeln('Wrong answer. The answer was: ', result);
-                                 wrong := wrong + 1;
-                                 score := 100 * (correct / (correct + wrong));
+                                 score := 100 * (correct / (correct + 1));
                                  writeln('Your score is: ', score:2:3, '%.');
-                                 break;
+                                 break
                             end
-                   end;
+                   end
      end;
-     readln;
+     readln
 end.
